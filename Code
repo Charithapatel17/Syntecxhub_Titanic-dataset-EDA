@@ -1,0 +1,66 @@
+# TITANIC DATASET EDA – Syntecxhub Internship Project
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load dataset
+df = pd.read_csv("data/titanic.csv")
+
+# Create Age Bucket
+
+def age_group(age):
+    if age <= 12:
+        return 'Child'
+    elif age <= 50:
+        return 'Adult'
+    else:
+        return 'Senior'
+
+df['age_bucket'] = df['age'].apply(age_group)
+
+# Visualizations
+sns.set(style="whitegrid")
+
+# Survival by gender
+sns.countplot(data=df, x='sex', hue='survived')
+plt.title("Survival by Gender")
+plt.savefig("charts/survival_by_gender.png")
+plt.close()
+
+# Survival by passenger class
+sns.countplot(data=df, x='pclass', hue='survived')
+plt.title("Survival by Passenger Class")
+plt.savefig("charts/survival_by_class.png")
+plt.close()
+
+# Age distribution
+sns.histplot(df['age'], bins=20)
+plt.title("Age Distribution")
+plt.savefig("charts/age_distribution.png")
+plt.close()
+
+# Survival by Age Bucket
+sns.countplot(data=df, x='age_bucket', hue='survived')
+plt.title("Survival by Age Bucket")
+plt.savefig("charts/survival_age_bucket.png")
+plt.close()
+
+# Age vs Survival Boxplot
+sns.boxplot(data=df, x='survived', y='age')
+plt.title("Age vs Survival (Boxplot)")
+plt.savefig("charts/age_survival_boxplot.png")
+plt.close()
+
+# Age vs Survival Violin Plot
+sns.violinplot(data=df, x='survived', y='age')
+plt.title("Age vs Survival (Violin Plot)")
+plt.savefig("charts/age_survival_violin.png")
+plt.close()
+
+print("\n=== INSIGHT SUMMARY ===")
+print("1. Females show better survival than males.")
+print("2. First-class passengers have higher survival rates.")
+print("3. Children (age <= 12) survive more frequently.")
+print("4. Seniors (age > 50) have lower survival probability.")
+print("5. Age distribution shows more adults compared to children.")
