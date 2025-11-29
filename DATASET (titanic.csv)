@@ -1,0 +1,16 @@
+survived,sex,pclass,age,embarked
+1,female,1,23,S
+0,male,3,45,S
+1,female,2,30,C
+0,male,3,60,Q
+1,female,1,12,S
+0,male,3,34,S
+1,female,1,28,C
+0,male,2,55,S
+1,female,3,8,Q
+0,male,3,70,S
+1,female,2,35,C
+0,male,3,50,S
+1,female,1,19,S
+0,male,3,40,Q
+1,female,2,27,S
